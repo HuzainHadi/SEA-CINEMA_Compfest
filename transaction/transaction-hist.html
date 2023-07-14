@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Transaction History</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Transacntion Style -->
+    <link rel="stylesheet" href="transaction-style.css" />
+  </head>
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <div>
+        <a href="../index.html" id="logo-film"><i data-feather="film"></i></a>
+        <a href="../index.html" class="navbar-logo">SEA <span>CINEMA</span></a>
+      </div>
+
+      <div class="navbar-nav">
+        <a href="../index.html">Movies</a>
+        <a href="../balance.html">Balance</a>
+        <a href="#content">Transaction</a>
+        <a href="#signin">Sign In</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form end -->
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Transaction Section start -->
+    <section id="content" class="content">
+      <h2>Transaction History</h2>
+
+      <div class="transaction-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Movie Title</th>
+              <th>Seat Number</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="transaction-list">
+            <!-- Transaction items will be inserted here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- Transaction Section end -->
+
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/haditok_/"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+          ><i data-feather="linkedin"></i
+        ></a>
+        <a href="https://twitter.com/aabangjawa?t=DlKlWWeOKxE5COfNYXCPCA&s=09"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+
+      <div class="links">
+        <a href="../index.html">Movies</a>
+        <a href="../balance.html">Balance</a>
+        <a href="#content">Transaction</a>
+        <a href="#signin">Sing In</a>
+      </div>
+
+      <div class="credit">
+        <p>
+          Created by
+          <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+            >huzainhadi</a
+          >. | &copy; 2023.
+        </p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- Transaction Javascript -->
+    <script src="transaction-script.js"></script>
+  </body>
+</html>

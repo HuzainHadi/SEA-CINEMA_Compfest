@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Balance Page</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <div>
+        <a href="index.html" id="logo-film"><i data-feather="film"></i></a>
+        <a href="index.html" class="navbar-logo">SEA <span>CINEMA</span></a>
+      </div>
+
+      <div class="navbar-nav">
+        <a href="index.html">Movies</a>
+        <a href="#content">Balance</a>
+        <a href="transaction/transaction-hist.html">Transaction</a>
+        <a href="#signin">Sign In</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Content Balance Section start -->
+    <section id="content" class="content">
+      <h2>Balance</h2>
+
+      <div class="row">
+        <div class="desc">
+          <h3>Current Balance</h3>
+          <p id="current-balance">Rp 0</p>
+
+          <h3>Deposit</h3>
+          <form id="deposit-form">
+            <p for="deposit-amount">Deposit Amount (Rp):</p>
+            <div class="input-group">
+              <i data-feather="log-in"></i>
+              <input type="text" placeholder="0" id="deposit-amount" required />
+            </div>
+            <button type="submit" class="btn-deposit">Deposit</button>
+          </form>
+
+          <h3>Withdraw</h3>
+          <form id="withdraw-form">
+            <p for="withdraw-amount">Withdraw Amount (Rp):</p>
+            <div class="input-group">
+              <i data-feather="log-out"></i>
+              <input
+                type="text"
+                placeholder="0"
+                id="withdraw-amount"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-withdraw">Withdraw</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Content Balance Section end -->
+
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/haditok_/"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+          ><i data-feather="linkedin"></i
+        ></a>
+        <a href="https://twitter.com/aabangjawa?t=DlKlWWeOKxE5COfNYXCPCA&s=09"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+
+      <div class="links">
+        <a href="index.html">Movies</a>
+        <a href="#content">Balance</a>
+        <a href="transaction/transaction-hist.html">Transaction</a>
+        <a href="#signin">Sing In</a>
+      </div>
+
+      <div class="credit">
+        <p>
+          Created by
+          <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+            >huzainhadi</a
+          >. | &copy; 2023.
+        </p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- Balance JavaScript -->
+    <script>
+      // Current user balance
+      let balance = 0;
+
+      // Current balance element
+      const currentBalanceElement = document.getElementById("current-balance");
+
+      // Deposit form
+      const depositForm = document.getElementById("deposit-form");
+      depositForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const depositAmount = parseFloat(
+          document.getElementById("deposit-amount").value
+        );
+        if (!isNaN(depositAmount) && depositAmount > 0) {
+          balance += depositAmount;
+          currentBalanceElement.textContent = formatCurrency(balance);
+          alert("Deposit successful.");
+        } else {
+          alert("Please enter a valid deposit amount.");
+        }
+        depositForm.reset();
+      });
+
+      // Withdraw form
+      const withdrawForm = document.getElementById("withdraw-form");
+      withdrawForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const withdrawAmount = parseFloat(
+          document.getElementById("withdraw-amount").value
+        );
+        const maxWithdrawAmount = Math.min(balance, 500000);
+        if (
+          !isNaN(withdrawAmount) &&
+          withdrawAmount > 0 &&
+          withdrawAmount <= maxWithdrawAmount
+        ) {
+          balance -= withdrawAmount;
+          currentBalanceElement.textContent = formatCurrency(balance);
+          alert("Withdrawal successful.");
+        } else {
+          alert(
+            "Please enter a valid withdrawal amount (maximum: " +
+              formatCurrency(maxWithdrawAmount) +
+              ")."
+          );
+        }
+        withdrawForm.reset();
+      });
+
+      // Helper function to format currency
+      function formatCurrency(amount) {
+        return "Rp " + amount.toLocaleString("id-ID");
+      }
+
+      // Update current balance on page load
+      currentBalanceElement.textContent = formatCurrency(balance);
+    </script>
+  </body>
+</html>

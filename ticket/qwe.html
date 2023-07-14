@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ticket Page</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        color: red;
+        text-align: center;
+      }
+
+      .seats-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .seat {
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+        border: 1px solid #777;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+      }
+
+      .seat.selected {
+        background-color: red;
+      }
+
+      .seat.disabled {
+        background-color: #777;
+        cursor: not-allowed;
+      }
+      form {
+        margin-top: 20px;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      #payment-section {
+        margin-top: 20px;
+        display: none;
+      }
+
+      #payment-amount {
+        color: red;
+        font-weight: bold;
+      }
+
+      #pay-button {
+        margin-top: 10px;
+      }
+
+      #balance {
+        margin-top: 20px;
+      }
+
+      #add-funds {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ticket Page</h1>
+
+    <div class="seats-container">
+      <!-- Generate seats dynamically -->
+    </div>
+
+    <form id="personal-info-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <br />
+      <label for="age">Age:</label>
+      <input type="number" id="age" required />
+      <br />
+      <button type="button" id="continue-button" disabled>Continue</button>
+    </form>
+
+    <div id="payment-section">
+      <h2>Payment</h2>
+      <p>Payment amount: $<span id="payment-amount"></span></p>
+      <button type="button" id="pay-button" disabled>Pay</button>
+    </div>
+
+    <div id="balance">
+      <h2>Balance</h2>
+      <a href="#" id="balance">Rp <span id="current-balance"></span>,00</a>
+      <button id="add-funds">Add Funds</button>
+    </div>
+
+    <script>
+      // Maximum number of tickets per transaction
+      const maxTickets = 6;
+
+      // Array to store selected seats
+      const selectedSeats = [];
+
+      // Generate seats dynamically
+      const seatsContainer = document.querySelector(".seats-container");
+      for (let i = 1; i <= 64; i++) {
+        const seatElement = document.createElement("div");
+        seatElement.classList.add("seat");
+        seatElement.textContent = i;
+
+        seatElement.addEventListener("click", function () {
+          if (seatElement.classList.contains("selected")) {
+            // Deselect the seat
+            seatElement.classList.remove("selected");
+            const index = selectedSeats.indexOf(i);
+            if (index > -1) {
+              selectedSeats.splice(index, 1);
+            }
+          } else if (selectedSeats.length < maxTickets) {
+            // Select the seat
+            seatElement.classList.add("selected");
+            selectedSeats.push(i);
+          }
+        });
+
+        seatsContainer.appendChild(seatElement);
+      }
+
+      // Personal information form
+      const personalInfoForm = document.getElementById("personal-info-form");
+      const continueButton = document.getElementById("continue-button");
+      personalInfoForm.addEventListener("input", function () {
+        updateContinueButton();
+      });
+
+      // Payment section
+      const paymentSection = document.getElementById("payment-section");
+      const paymentAmountElement = document.getElementById("payment-amount");
+      const payButton = document.getElementById("pay-button");
+      payButton.addEventListener("click", function () {
+        processPayment();
+      });
+
+      // Update continue button status
+      function updateContinueButton() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+
+        continueButton.disabled =
+          name === "" || age === "" || selectedSeats.length === 0;
+
+        if (age < minimumAge) {
+          payButton.disabled = true;
+          paymentAmountElement.textContent = "";
+        } else {
+          const paymentAmount = selectedSeats.length * 10;
+          payButton.disabled = false;
+          paymentAmountElement.textContent = paymentAmount;
+        }
+      }
+
+      // Process payment
+      function processPayment() {
+        // Perform payment processing
+        alert("Payment successful. Enjoy the movie!");
+        // ...
+      }
+
+      let balance = 0;
+      const currentBalanceElement = document.getElementById("current-balance");
+      currentBalanceElement.textContent = balance;
+
+      // Add funds button
+      const addFundsButton = document.getElementById("add-funds");
+      addFundsButton.addEventListener("click", function () {
+        const amount = prompt("Enter the amount to add:");
+        if (amount) {
+          balance += parseFloat(amount);
+          currentBalanceElement.textContent = balance;
+          alert("Funds added successfully.");
+        }
+      });
+
+      // Process payment
+      function processPayment() {
+        const paymentAmount = selectedSeats.length * 10;
+
+        if (paymentAmount <= balance) {
+          balance -= paymentAmount;
+          currentBalanceElement.textContent = balance;
+          alert("Payment successful. Enjoy the movie!");
+          // ...
+        } else {
+          alert("Insufficient balance. Please add funds or cancel the order.");
+        }
+      }
+    </script>
+  </body>
+</html>

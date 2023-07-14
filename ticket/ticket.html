@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ticket Page</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Ticket Style -->
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <div>
+        <a href="#" data-feather="film"></a>
+        <a href="#" class="navbar-logo">SEA <span>CINEMA</span></a>
+      </div>
+
+      <div class="navbar-nav">
+        <a href="../index.html">Movies</a>
+        <a href="../balance.html">Balance</a>
+        <a href="#ticket">Ticket</a>
+        <a href="#signin">Sign In</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Seats Section start -->
+    <section id="content" class="content">
+      <h2>Ticket Seats</h2>
+
+      <div class="row">
+        <div class="desc-seats">
+          <h3>Select Seats</h3>
+          <p>Maximum 6 tickets per transaction.</p>
+          <h4>SCREEN</h4>
+
+          <div id="seats">
+            <!-- Dynamically generated seats will be inserted here -->
+          </div>
+        </div>
+
+        <div class="desc">
+          <h3>Personal Information</h3>
+          <form id="personal-info-form">
+            <p for="name">Name:</p>
+            <div class="input-group">
+              <input type="text" id="name" required />
+            </div>
+            <br />
+            <p for="age">Age:</p>
+            <div class="input-group">
+              <input type="number" id="age" required />
+            </div>
+            <br />
+            <button type="button" id="continue-button" disabled>
+              Continue
+            </button>
+            <h3 class="h3-payment">Payment</h3>
+            <p>Payment amount: <span id="payment-amount"></span></p>
+            <button type="button" id="pay-button" disabled>Pay</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Seats Section end -->
+
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/haditok_/"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+          ><i data-feather="linkedin"></i
+        ></a>
+        <a href="https://twitter.com/aabangjawa?t=DlKlWWeOKxE5COfNYXCPCA&s=09"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+
+      <div class="links">
+        <a href="../index.html">Movies</a>
+        <a href="../balance.html">Balance</a>
+        <a href="#ticket">Ticket</a>
+        <a href="#signin">Sing In</a>
+      </div>
+
+      <div class="credit">
+        <p>
+          Created by
+          <a href="https://www.linkedin.com/in/huzain-hadi-665014185/"
+            >huzainhadi</a
+          >. | &copy; 2023.
+        </p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- Ticket Javascript -->
+    <script src="ticket-script.cjs"></script>
+  </body>
+</html>

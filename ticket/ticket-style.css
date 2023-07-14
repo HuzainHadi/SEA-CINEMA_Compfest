@@ -1,0 +1,107 @@
+/* Inisialisasi warna */
+:root {
+  --primary: #ff0000;
+  --bg: #010101;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  color: red;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+#seats {
+  margin-bottom: 40px;
+}
+
+.seat {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background-color: #333;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.seat:hover {
+  background-color: #444;
+}
+
+.selected {
+  background-color: red;
+}
+
+.disabled {
+  background-color: #777;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #a70000;
+}
+
+#payment-amount {
+  font-weight: bold;
+}
+
+.alert {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  margin-bottom: 20px;
+}
